@@ -1,69 +1,381 @@
 	jQuery(document).ready(function ($) {
- 
- 
-		//initialise Stellar.js
-		$(window).stellar();
- 
+		
+		
+		
 		//Cache some variables
-		var links = $('.navigation').find('li');
-		slide = $('.slide');
-		button = $('.button');
-		mywindow = $(window);
-		htmlbody = $('html,body');
- 
- 
-		//Setup waypoints plugin
-		slide.waypoint(function (event, direction) {
- 
-			//cache the variable of the data-slide attribute associated with each slide
-			dataslide = $(this).attr('data-slide');
- 
-			//If the user scrolls up change the navigation link that has the same data-slide attribute as the slide to active and 
-			//remove the active class from the previous navigation link 
-			if (direction === 'down') {
-				$('.navigation li[data-slide="' + dataslide + '"]').addClass('active').prev().removeClass('active');
-			}
-			// else If the user scrolls down change the navigation link that has the same data-slide attribute as the slide to active and 
-			//remove the active class from the next navigation link 
-			//else{
-				//$('.navigation li[data-slide="' + dataslide + '"]').addClass('active').next().removeClass('active');
-			//}
- 
+		var slide = $('.slide');
+		var mywindow = $(window);
+		var htmlbody = $('html,body');
+		var samplebutton = $('.button');
+		var closebutton = $('#ajaxReturn');
+		var samplemenu = $('.samplemenu');
+//Adding elements on the load************************************************
+		//$(".navigation").hide().delay(2500).fadeIn(1000);
+		//$(".menu").hide().delay(2000).fadeIn('slow');
+		
+		//$('body').css('display', 'none');
+		//$('body').fadeIn(1000);
+
+//Ajax functions on click
+		samplebutton.click(function() {
+			event.preventDefault();
+			newLocation = $(this).attr('href');
+			//history.pushState({}, '', newLocation);
+			$('.samplecontainer').fadeOut(300, function(){newpage(newLocation);});	
 		});
+		
+		samplemenu.click(function() {
+			event.preventDefault();
+			newLocation = $(this).attr('href');
+			//history.pushState({}, '', newLocation);
+			$('.samplecontainer').fadeOut(300, function(){newpage(newLocation);});	
+		});
+		
+		function newpage(href) {
+			$(".ajaxcontainer")
+				.hide()
+				.load(href + " .ajaxcontainer >*", function(){
+					$(".ajaxcontainer").fadeIn(300);
+				
+						$(".headerlineblack").animate({			
+						width:"100%"
+						},500, "swing",function(){
+						$(".samplemenu").addClass("visible");
+						$(".sampleclose").addClass("visible");
+						});	
+							
+					});
+			}
+		
+		closebutton.click(function() {
+			event.preventDefault();
+			$(".samplemenu").removeClass("visible");
+			$(".sampleclose").removeClass("visible");
+			$(".menu.active").animate({
+			left:"-400px",
+			opacity:"0"
+			},200);
+			$('.project-container').fadeOut("fast", function(){headerclose();});	
+			
+		});
+		
+		function headerclose(){
+				$(".headerlinewhite").animate({			
+								width:"100%"
+								},700, function(){
+								location.reload(true);});
+								
+		}
+		
+		function fullhorizontal(){
+			//$.fn.fullpage.reBuild();
+			$('.ajaxcontainer').fullpage({
+					sectionsColor: ['#ffffff', '#4BBFC3', '#ffffff', 'whitesmoke', '#ccddff'],
+					anchors: ['firstPage', 'secondPage', 'thirdPage', 'fifthSlide', 'sixthSlide'],
+					menu: '.main-menu',
+					loopHorizontal: true,
+					continuousVertical: true,
+					afterLoad: function(anchorLink, index){
+				  
+						if(index == 1){
+							$('.currenttitle').html("Top");
+						}
+						if(index == 2){
+							$('.currenttitle').html("About");
+						}
+						if(index == 3){
+							$('.currenttitle').html("Projects");
+							$(".samples").find('li').each(function(i) {
+								var li = $(this);
+								setTimeout(function() {
+									li.addClass("visible");
+								}, i*100);
+							});
+						} else {
+							$(".samples").find('li').each(function(i) {
+								var li = $(this);
+								setTimeout(function() {
+								li.removeClass("visible");
+								}, i*100);
+							});	
+						}
+					}
+			});
+		}
+		
+		
+		
+    	
+	
+	//When the menu icon is clicked, the icon will transform to X("Close") icon
+	$(".menu").click(function() {
+	
+		$(".menu").toggleClass("close");
+		$("#navitem5").find("a").addClass("white").removeClass("black");
+		$(".outline").toggleClass("visible");
+		
+		//Adding z-index when menu button is clicked.
+		$(".nav-item").toggleClass("index"); 
+	
+		
+		//Adding class "visible" to the navigation items in delay of 200ms when menu icon is clicked.	
+		$(".nav-item").each(function(i) {
+			var $li = $(this);
+			setTimeout(function() {
+				$li.toggleClass("visible");
+				}, i*100);
+		});
+		
+		$('.contactoutline').removeClass('visible');
+			
+		
+	});
+	
+	$('#navitem4').click(function(){
+	
+		$('.contactoutline').toggleClass('visible');
+	});
+	
+
+	
+	
+	
+	//scrollTop() returns the value of the current vertical position of the scroll bar.	
+	mywindow.scroll(function() {
+		
+		
+		var currentheightpercent = ($(document).scrollTop())/(($(document).height())-($(window).height()));
+		
+		var x = ($(".line").height())*currentheightpercent;
+		$(".white-container").height(x);
+		
+		//The sample cases will show up in order when it scrolltop to slide 3.	
+		if( currentheightpercent > 0.5 && currentheightpercent < 0.74){
+			$(".sample").each(function(i) {
+					var li = $(this);
+					setTimeout(function() {
+						li.addClass("visible");
+						}, i*100);
+				});	
+			}
+		//The sample cases will disappear in order when it scrolltop to slide 2.	
+		if( currentheightpercent < 0.48 || currentheightpercent >0.75){
+			$(".sample").each(function(i) {
+					var li = $(this);
+					setTimeout(function() {
+						li.removeClass("visible");
+						}, i*100);
+				});	
+			}
+			
+		});
+		
+	
+	
+	//function that fadein all the elements on the load.
+	//$(".hidden").fadeIn(3000).fadeOut(1000).removeClass('hidden');
+	$(".hidden").each(function(i){
+		var $intelem = $(this);
+		setTimeout(function() {
+				$intelem.fadeIn('slow').removeClass('hidden');
+				}, i*1000);
+		
+		});
+	
+	//Allowing the class "samples overview" to be draggable.
+	
+		
+		$(".samples").draggable({scroll: false, axis: "x", stop: function(){
+		
+			var casesposition = $(".samples").position();
+			var rightoffset = $(window).width()-$(".samples").width();
+				if(casesposition.left > 0){
+					$(".samples").animate({
+					left: "0",
+					},200, "swing")
+				} else if(casesposition.left < rightoffset){
+					$(".samples").animate({
+					left: rightoffset,
+					},200, "swing")
+				} 
+				
+		}});
+		
+		$(".samples").on("swipeleft",function(){
+		
+					alert("hello");
+				
+		});
+		
+		$(".samples").on("swiperight",function(){
+		
+					$(".samples").animate({
+					left: "0"
+					},200, "swing");
+				
+		});
+		
+		
+		
+
+		
+	//The animation when hover on send button.
+
+		$(".button").hover(
+			function(){
+			$(this).find(".helper").height("180px");
+			},
+			function(){
+			$(this).find(".helper").height("0px");
+			}
+		);
+		
+	//AboutBtn hover effect.
+		$(".aboutbtn").hover( function(){
+			var aboutid = $(this).attr('about-id');
+			if(aboutid === '2'){
+					$('.grid-container span').removeClass("visible");
+					$('.grid-container span[about-id="' + aboutid + '"]').addClass("visible");
+					
+					$(".japanlist").find('li').each(function(i) {
+					var li = $(this);
+					setTimeout(function() {
+						li.addClass("visible");
+						}, i*100);
+				});	
+					
+				} else{
+					$('.grid-container span').removeClass("visible");
+					$('.grid-container span[about-id="' + aboutid + '"]').addClass("visible");
+					
+					$(".japanlist").find('li').each(function(i) {
+					var li = $(this);
+					setTimeout(function() {
+						li.addClass("nonvisible");
+						li.removeClass("visible");
+						li.removeClass("nonvisible");
+						}, i*100);
+					});
+				}
+		});
+			
+		$(".aboutbtn").hover(
+			function(){
+			$(this).find(".helper").height("120px");
+			},
+			function(){
+			$(this).find(".helper").height("0px");
+			}
+		);
+	
+// hey [visitor name] effect******************************************************
+
+		
+		
+		
+		
+		var hellotext = function(text){
+			//var textinput = $(".contact-form").find('input[name="name"]').val();
+			var hellotext = text;
+				var letter = hellotext.split("");
+				var n = 0;
+				var length = letter.length;
+						$("#heading").addClass("blinking-cursor");
+						$.each(letter, function(i, letter) {	
+						setTimeout(function() {
+							$("#heading").append('<span class="char'+(n+1)+'">'+letter+'</span>');
+							n++;
+							},i*100);
+						});
+
+			
+		}
+		
+		var cleartext = function(){
+				var letters = $("#heading").children();
+				var rletters = letters.get().reverse();
+				
+				$(rletters).each(function(i){
+					var textletter = $(this);
+					setTimeout (function(){
+						textletter.remove();
+						},i*100);
+				});
+		};
+		
+		hellotext("contact");
+		$(".contact-form").find('input[name="name"]').on('blur', function() {
+				var r = $.Deferred();
+				var textinput = $(".contact-form").find('input[name="name"]').val();
+				setTimeout(function(){
+				//cleartext();
+				hellotext('hello ' +textinput);
+				r.resolve();
+				},2000);
+				//hellotext('hello ' +textinput);
+				//cleartext().done(function(){ hellotext(textinput); });
+				cleartext();
+				//hellotext('hello ' +textinput);
+		});	
+		
+		//Opening resume on new window.
+		$("#navitem5").find("a").click(function() {
+			window.open("narom_resume.pdf","Narom's Resume");
+		});
+		
+		//Scroll automatically to next slide.
+		//var lastScrollTop = 0;
+		//$(window).scroll(function(){
+		  // var st = $(this).scrollTop();
+		   //if (st < lastScrollTop){
+			   // downscroll code
+				//var currentslide = $(".activenav").attr('data-slide');
+				//var nxtslide = ++currentslide;
+				//goToByScroll(nxtslide);
+		  // } else {
+			  // upscroll code
+			  //var currentslide = $(".activenav").attr('data-slide');
+				//var nxtslide = --currentslide;
+				//goToByScroll(nxtslide);
+		  // }
+		  //lastScrollTop = st;
+		//});
+		
+/*	
+		$(function() {
+			var $main = $("main");
+
+			  $(document).on("click", "a", function() {
+				var href = $(this).attr("href");
+
+				history.pushState({}, '', href);
+				$main.load(href + " main>*");
+				return false;
+				});
+		});
+		
+		function samplescale(datasample){
+		 var windowwidth = $(window).width();
+		$(".samples").find('.sample[data-sample="'+ datasample + '"]').animate({
+			top: "0",
+			height:"100%",
+			width:windowwidth,
+			left:"0",
+			},500);
+	}
+		//Make the sample window bigger when the "go" button is clicked.
+	
+		samplebutton.click(function(e) {
+			var datasample = $(this).attr('data-sample');
+			e.preventDefault();
+			samplescale(datasample);
+		});
+		
+*/	
+
+});	
+	
+	
+	
+	
  
-  //waypoints doesnt detect the first slide when user scrolls back up to the top so we add this little bit of code, that removes the class 
-    //from navigation link slide 2 and adds it to navigation link slide 1. 
-    mywindow.scroll(function () {
-        if (mywindow.scrollTop() == 0) {
-            $('.navigation li[data-slide="1"]').addClass('active');
-           $('.navigation li[data-slide="2"]').removeClass('active');
-        }
-    });
- 
-    //Create a function that will be passed a slide number and then will scroll to that slide using jquerys animate. The Jquery
-    //easing plugin is also used, so we passed in the easing method of 'easeInOutQuint' which is available throught the plugin.
-    function goToByScroll(dataslide) {
-        htmlbody.animate({
-            scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
-        }, 2000, 'easeInOutQuint');
-    }
- 
- 
- 
-    //When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
-    links.click(function (e) {
-        e.preventDefault();
-        dataslide = $(this).attr('data-slide');
-        goToByScroll(dataslide);
-    });
- 
-    //When the user clicks on the button, get the get the data-slide attribute value of the button and pass that variable to the goToByScroll function
-    button.click(function (e) {
-        e.preventDefault();
-        dataslide = $(this).attr('data-slide');
-        goToByScroll(dataslide);
- 
-    });
- 
- 
-});

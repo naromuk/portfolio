@@ -1,72 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NAROMK</title>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-    <!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/custom.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>NAROMK</title>
+	<meta name="author" content="Narom Kuoch" />
+	<meta name="description" content="fullPage continuous scrolling demo." />
+	<meta name="keywords"  content="fullpage,jquery,demo,scroll,loop,continuous" />
+	<meta name="Resource-type" content="Document" />
 
-	
- 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/js.js"></script>
-	<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
-	<script type="text/javascript" src="js/waypoints.min.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  
-  <body>
-	<!--
-	<header>
-		<img class="blue-glow" src="./img/black-header-glow.jpg"></img>
-	</header>
-	-->
-	
-	<ul class="navigation">
-		<li data-slide="1" class="">Slide 1</li>
-		<li data-slide="2" class="">Slide 2</li>
-		<li data-slide="3" class="">Slide 3</li>
-		<li data-slide="4" class="">Slide 4</li>
-	</ul>
-	<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">                        
-		<a class="button" data-slide="2" title=""></a>
+	<link rel="icon" type="image/ico" href="img/favicon.ico">
+	<link id="custom1" rel="stylesheet" href="css/custom.css" >
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/examples.css" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script id="js1" type="text/javascript" src="js/js.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="js/examples.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+					sectionsColor: ['#ffffff', '#ffff', '#ffffff', 'whitesmoke', '#ccddff'],
+					anchors: ['firstPage', 'secondPage', 'thirdPage', 'fifthSlide', 'sixthSlide'],
+					menu: '.main-menu',
+					continuousVertical: true,
+					afterLoad: function(anchorLink, index){
+				  
+						if(index == 1){
+							$('.currenttitle').html("Top");
+						}
+						if(index == 2){
+							$('.currenttitle').html("About");
+						}
+						if(index == 3){
+							$('.currenttitle').html("Projects");
+							$(".samples").find('li').each(function(i) {
+								var li = $(this);
+								setTimeout(function() {
+									li.addClass("visible");
+								}, i*100);
+							});
+						} else {
+							$(".samples").find('li').each(function(i) {
+								var li = $(this);
+								setTimeout(function() {
+								li.removeClass("visible");
+								}, i*100);
+							});	
+						}
+					}
+			});
+		});
 		
-	</div><!--End Slide 1-->
-
-	<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">                        
-		<a class="button" data-slide="3" title=""></a> 
-		<span class="slideno">Slide 2</span>
-	</div><!--End Slide 2-->
-	
-	<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">                        
-		<a class="button" data-slide="4" title=""></a> 
-		<span class="slideno">Slide 3</span>
-	</div><!--End Slide 3-->
-	
-	<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0">  
-		<span class="slideno">Slide 4</span>
-	</div><!--End Slide 4-->
+		$(window).load(function() { // makes sure the whole site is loaded
+			$('#loaderWrap').delay(400).fadeOut('slow'); // will first fade out the preloading animation
+			$('#preloader').delay(500).fadeOut('slow'); // will fade out the white DIV that covers the website.
+			$('body').delay(200).css({'overflow':'visible'});	
+			$(".menu.active").animate({
+						top:"20px",
+						opacity: "1"
+						},350, "swing");
+			
+		});
+	</script>
 	
 
+</head>
+<body>
 
+  <!-- Preloader -->
+		<div id="preloader">
+			<div class="background"></div>
+			<div id="loaderWrap">
+				<div class="spinner">
+				  <div class="rect1"></div>
+				  <div class="rect2"></div>
+				  <div class="rect3"></div>
+				  <div class="rect4"></div>
+				  <div class="rect5"></div>
+				</div>
+			</div>
+		</div>
+		
+ <!-- menu icon -->		
+		
+		<div class="headerwrapper">
+			<div class="menu active">
+				<div>
+					<span class="burger-line bread top"></span>
+					<span class="burger-line meat"></span>
+					<span class="burger-line bread bottom"></span>
+				</div>
+				<div class="menutitle">menu</div>
+				<div class="verticalline"></div>
+				<div class="currenttitle">top</div>
+			</div>
+		</div>
 
+	<div class="main-menu hidden">
+		<div class="outline"></div>
+		<nav>
+				<ul class="navigation">
+					<li class="nav-item" id="navitem1" data-menuanchor="firstPage">
+						<a href="#firstPage">
+							<div class="label">01</div>
+							<div class="title">TOP</div>
+							<div class="line"></div>
+						</a>
+					</li>
+					<li class="nav-item" id="navitem2" data-menuanchor="secondPage">
+						<a href="#secondPage">
+							<div class="label">02</div>
+							<div class="title">About</div>
+							<div class="line"></div>
+						</a>
+					</li>
+					<li class="nav-item" id="navitem3" data-menuanchor="thirdPage">
+						<a href="#thirdPage">
+							<div class="label">03</div>
+							<div class="title">Projects</div>
+							<div class="line"></div>
+						</a>
+					</li>
+					<li class="nav-item" id="navitem4" data-slide="4">
+						<div class="label">04</div>
+						<div class="title">Contact</div>
+						<div class="line"></div>
+					</li>
+					<li class="nav-item" id="navitem5"><a href="narom_resume.pdf" target="_blank" class="black">
+						<div class="label">05</div>
+						<div class="title">Resume</div>
+						<div class="line"></div>
+						</a>
+					</li>
+				</ul>
+		</nav>	
+		
+	</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!--<script src="js/bootstrap.min.js"></script>-->
-  </body>
+<!-- This is contact form-->
+<div class="contactoutline" id="slide4"> 
+		<div class="wrap">
+			<div class="inner">
+				<div class="container">
+					<h1>
+						<span id="heading">
+							<span></span>
+						</span>
+					</h1>
+					<form class="contact-form" method="POST" name="contactform" action="submit.php" ;>
+						<p class="field">
+							<input class="half" name="name" placeholder="name" type="text"></input>
+						</p>
+						<p class="field email">
+							<input class="half" name="email" placeholder="email" required type="email"></input>
+						</p>
+						<p class="field message">
+							<textarea class="full" name="message" placeholder="message" ></textarea>
+						</p>
+						<div class="end">
+							<p class="action">
+								<button class="button" type="submit" data-title="Send" value="submit">send
+									<span class="helper"></span>
+								</button>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>		
+</div>	
+
+<!--	
+<ul id="menu">
+	<li data-menuanchor="firstPage" class="active"><a href="#firstPage">First slide</a></li>
+	<li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+	<li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+</ul>
+-->
+<div id="fullpage">
+	<!--Section0-->
+	<div class="section " id="section0">
+		<div class="intro">
+		<div class="intro_box">
+			<canvas id="myCanvas">narom</canvas>
+			<script type="text/javascript" src="js/bubbles.js"></script>
+			<script type="text/javascript" src="js/main.js"></script>
+		<!--<span><h1>n</h1><h1>aromKuoch</h1></span>-->
+		<span><p>This is a Portfolio.</p></span>
+		
+		<div>
+			<nav class="da-arrows">
+				<div class="process-scroll-text">SCROLL</div>
+				<a class="da-arrows-next" href="#secondPage">
+					<img class="arrow-down" src="./img/scroll.png"></img>
+				</a>
+			</nav>
+		</div>
+		</div>
+		</div>
+	</div>
+	
+	<!--Section1-->
+	<div class="section" id="section1">
+		<div class="wrap">
+			<div class="inner">
+				<div class="container">
+					<h1>About Narom!</h1>
+					<p>Go to the first section and scroll up or to the last one and scroll down to see how it works.</p>
+				</div>
+			</div>	
+		</div>
+		<ul class="my-list">
+			<li class="place">
+				<a href="#">
+					<div class="bg1"></div>
+					<div class="bg2"></div>
+					<i class="i1"></i>
+					<i class="i2"></i>
+				</a>
+			</li>
+			<li class="Education">
+				<a href="#">
+					<div class="bg1"></div>
+					<div class="bg2"></div>
+					<i class="i1"></i>
+					<i class="i2"></i>
+				</a>
+			</li>
+			<li class="Hobby">
+				<a href="#">
+					<div class="bg1"></div>
+					<div class="bg2"></div>
+					<i class="i1"></i>
+					<i class="i2"></i>
+				</a>
+			</li>
+			<li class="Skills">Skills</li>
+			<li class="Language">Language</li>
+			<li class="Certificate">Certificate</li>
+			<li class="Work History">Work History</li>
+			<li class="Hobby 2">Hobby 2</li>
+			<li class="Hobby">Hobby</li>
+			<li class="Skills">Skills</li>
+			<li class="Language">Language</li>
+			<li class="Certificate">Certificate</li>
+			<li class="Work History">Work History</li>
+			<li class="Hobby 2">Hobby 2</li>
+		</ul>
+	</div>
+	
+	<!--Section2-->
+	<div class="section" id="section2">
+		<div class="header">	
+			
+				<a class="samplemenu" id="sample1" href="sample1.html" >Aeronomy</a>
+				<a class="samplemenu" id="sample2"href="sample2.html" >Global Vapery</a>
+				<a class="samplemenu" id="sample3"href="sample3.html" >Tip Calculator</a>
+				<a class="samplemenu" id="sample4"href="sample4.html" >Vitavape</a>	
+				<a class="sampleclose" id="ajaxReturn" href="index.html">Close</a>
+			<div class="headerlineblack"></div>
+			<div class="headerlinewhite"></div>
+		</div>
+		<div class="ajaxcontainer">
+		<div class="samplecontainer">
+			<ul class="samples overview">
+				<li class="space"></li>	
+		
+				<li class="sample" id="case1" data-sample="1">
+					<div class="title">
+						<h2>
+							<span>Aeronomy</span>
+						</h2>
+					</div>
+					
+					<div class="projectcontent">
+						<h3>
+							<span>Business Website</span><br><br>
+							<span>Content Management System - Joomla</span><br></br>
+							<span>Remodel the whole website with new content.</span>
+						</h3>
+					</div>
+					<div class="samplebutton">							
+								<a class="button" href="sample1.html" data-title="Go" data-sample="5" data-menuanchor="fifthSlide">Check
+									<span class="helper"></span>
+								</a>							
+					</div>
+				</li>
+				
+				<li class="sample" id="case2" data-sample="2">
+					<div class="title">
+						<h2>
+							<span>Global</span>
+							<span>Vapery</span>
+						</h2>					
+					</div>
+					<div class="projectcontent">
+						<h3>
+							<span>Business Website</span><br><br>
+							<span>Content Management System - BigCommerce</span><br>
+							<span>Redesign and implement the new design.</span><br>
+							<span>Adding new function.</span>
+						</h3>
+					</div>
+					<div class="samplebutton">							
+								<button class="button" href="sample2.html" data-title="Go" data-sample="6" data-menuanchor="sixthPage">Check
+									<span class="helper"></span>
+								</button>							
+					</div>
+					
+				</li>
+				<li class="sample" id="case3" data-sample="3">
+					<div class="title">
+						<h2>
+							<span>Tip</span>
+							<span>Calculator</span>
+						</h2>
+					</div>
+					<div class="projectcontent">
+						<h3>
+							<span>Android Application</span><br><br>
+							<span>Eclipse</span><br>
+							<span>Built Tip Calculator for Android.</span><br>
+							<span>Compatible use in Japan & France.</span>
+						</h3>
+					</div>
+					<div class="samplebutton">							
+								<button class="button" href="sample3.html" data-title="Go" data-sample="7">Check
+									<span class="helper"></span>
+								</button>							
+					</div>					
+				</li>
+				<li class="sample" id="case4" data-sample="4">
+					<div class="title">
+						<h2>
+							<span>Vitavape</span>
+						</h2>
+					</div>
+					
+					<div class="projectcontent">
+						<h3>
+							<span>Business Website</span><br><br>
+							<span>Content Management System - BigCommerce</span><br>
+							<span>Redesign and implement the new design.</span><br>
+							<span>Adding new function.</span>
+						</h3>
+					</div>
+					
+					<div class="samplebutton">							
+								<button class="button" href="sample4.html" data-title="Go" data-sample="8">Check
+									<span class="helper"></span>
+								</button>							
+					</div>
+				</li>		
+				<li class="space"></li>
+			</ul>
+		</div>
+		</div><!--End of Ajax Container-->
+	</div>
+</div>
+
+</body>
 </html>
