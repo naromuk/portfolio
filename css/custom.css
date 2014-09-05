@@ -593,6 +593,21 @@ overflow: hidden;
 position: relative;
 -webkit-tap-highlight-color: rgba(254,97,89,.8);
 }
+
+
+
+a:active, a:hover {
+outline: 0;
+}
+
+a {
+background: 0 0;
+}
+
+a:-webkit-any-link {
+cursor: auto;
+}
+
 .my-list .bg1, .my-list .bg2,
 .my-list .i1, .my-list .i2, .my-list .i1:after, .my-list .i2:after{
 display: block;
@@ -607,11 +622,68 @@ left: 0;
 transition: .35s;
 }
 .my-list .place .bg1{
+background-image: url(../img/japan16.jpg);
+}
+
+.my-list .Education .bg1{
+background-image: url(../img/japan15.jpg);
+}
+
+.my-list .Courses .bg1{
+background-image: url(../img/japan14.jpg);
+}
+
+.my-list .Skills .bg1{
 background-image: url(../img/japan13.jpg);
 }
 
-.my-list .place .bg1{
-background: no-repeat center center;
+.my-list .Language .bg1{
+background-image: url(../img/japan12.jpg);
+}
+
+.my-list .Certificate .bg1{
+background-image: url(../img/japan11.jpg);
+}
+
+.my-list .Work .bg1{
+background-image: url(../img/japan10.jpg);
+}
+
+.my-list .Hobby .bg1{
+background-image: url(../img/japan9.jpg);
+}
+
+.my-list .Hobby2 .bg1{
+background-image: url(../img/japan8.jpg);
+}
+
+.my-list .Programming .bg1{
+background-image: url(../img/japan5.jpg);
+}
+
+
+.my-list .Interest .bg1{
+background-image: url(../img/japan13.jpg);
+}
+
+.my-list .Travel .bg1{
+background-image: url(../img/japan12.jpg);
+}
+
+
+.my-list a:hover .bg1 {
+-webkit-transform: scale(1);
+-moz-transform: scale(1);
+-o-transform: scale(1);
+-ms-transform: scale(1);
+transform: scale(1);
+}
+
+.my-list .place .bg1,.my-list .Education .bg1,.my-list .Courses .bg1,.my-list .Skills .bg1,
+.my-list .Language .bg1,.my-list .Certificate .bg1,.my-list .Work .bg1,.my-list .Hobby .bg1,
+.my-list .Hobby2 .bg1,.my-list .Programming .bg1,.my-list .Interest .bg1,.my-list .Travel .bg1
+{
+/*background: no-repeat center center;*/
 background-size: cover;
 -webkit-transform: scale(1.1);
 -moz-transform: scale(1.1);
@@ -619,6 +691,75 @@ background-size: cover;
 -ms-transform: scale(1.1);
 transform: scale(1.1);
 }
+
+.section-work .work-list .bg1:after {
+content: "";
+display: block;
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+background: rgba(0,0,0,.8);
+}
+
+.my-list .i2 {
+opacity: 0;
+-webkit-transform: translateY(-100%);
+-moz-transform: translateY(-100%);
+-o-transform: translateY(-100%);
+-ms-transform: translateY(-100%);
+transform: translateY(-100%);
+}
+
+.my-list .i1:after, .my-list .i2:after {
+content: "";
+-webkit-transition: none;
+-moz-transition: none;
+-o-transition: none;
+transition: none;
+}
+
+a {
+text-decoration: none;
+color: #fe6159;
+-webkit-transition: .15s;
+-moz-transition: .15s;
+-o-transition: .15s;
+transition: .15s;
+}
+
+.my-list .bg2 {
+opacity: 0;
+background-image: -webkit-linear-gradient(top,#ff5e3a 0,#ff2a68 100%);
+background-image: -moz-linear-gradient(top,#ff5e3a 0,#ff2a68 100%);
+background-image: -o-linear-gradient(top,#ff5e3a 0,#ff2a68 100%);
+background-image: linear-gradient(to bottom,#ff5e3a 0,#ff2a68 100%);
+}
+
+.my-list a:hover .bg2 {
+opacity: .6;
+}
+
+.i2 p {
+/* display: table-cell; */
+margin: 0;
+padding: 0 10px;
+/* vertical-align: middle; */
+width: 100%;
+height: 100%;
+text-align: center;
+color: rgb(255, 2, 2);
+}
+
+.my-list p {
+display: block;
+margin: 0 0 3px;
+font-weight: 700;
+font-size: 18px;
+line-height: 1.2;
+}
+
 /****************************** 
 about button
 *******************************/ 
