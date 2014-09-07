@@ -95,10 +95,9 @@ color: black;
 padding: 5px;
 text-transform: uppercase;
 letter-spacing: .1em;
-left: 20%;
+left: 40%;
 text-decoration: underline;
 /* text-align: center; */
-left: 50%;
 }
 	
 .samplemenu.visible{
@@ -133,9 +132,8 @@ color: black;
 padding: 5px;
 text-transform: uppercase;
 letter-spacing: .1em;
-left: 20%;
+left: 40%;
 text-decoration: underline;
-left: 50%;
 }
 
 .sampleclose.visible{
@@ -535,14 +533,14 @@ text-align: center;
 position: absolute;
 }
 
-/****************************** Section 2 *******************************/
+/****************************** Section 1 *******************************/
 .my-list {
 width: 101%;
 height: 34%;
 padding: 0;
 background: #000;
 list-style: none;
-text-indent: -9000px;
+/*text-indent: -9000px;*/
 font-size: 0;
 -webkit-transform: translateY(2px);
 -moz-transform: translateY(2px);
@@ -620,6 +618,20 @@ left: 0;
 -moz-transition: .35s;
 -o-transition: .35s;
 transition: .35s;
+
+}
+
+.my-list .i1 h1, .my-list .i1:after h1 {
+font-size: 30px;
+width: 100%;
+text-align: center;
+color: white;
+display: block;
+padding-top: 20%;
+}
+
+.my-list .who .bg1{
+background-image: url(../img/japan8.jpg);
 }
 .my-list .place .bg1{
 background-image: url(../img/japan16.jpg);
@@ -653,7 +665,7 @@ background-image: url(../img/japan10.jpg);
 background-image: url(../img/japan9.jpg);
 }
 
-.my-list .Hobby2 .bg1{
+.my-list .who .bg1{
 background-image: url(../img/japan8.jpg);
 }
 
@@ -740,26 +752,43 @@ background-image: linear-gradient(to bottom,#ff5e3a 0,#ff2a68 100%);
 .my-list a:hover .bg2 {
 opacity: .6;
 }
-
-.i2 p {
-/* display: table-cell; */
-margin: 0;
-padding: 0 10px;
-/* vertical-align: middle; */
-width: 100%;
-height: 100%;
-text-align: center;
-color: rgb(255, 2, 2);
-}
-
-.my-list p {
+/*
+.aboutContent {
 display: block;
-margin: 0 0 3px;
-font-weight: 700;
-font-size: 18px;
-line-height: 1.2;
+text-align:left;
+-webkit-transform: translateX(150px);
+-moz-transform: translateX(150px);
+-o-transform: translateX(150px);
+-ms-transform: translateX(150px);
+transform: translateX(150px);
+-webkit-transition: 1s;
+-moz-transition: 1s;
+-o-transition: 1s;
+transition: 1s;
+opacity: 0;
 }
 
+.aboutContent.visible{
+opacity: 1;
+-webkit-transform: none;
+-moz-transform: none;
+-o-transform: none;
+-ms-transform: none;
+transform: none;
+-webkit-transition: 1s;
+-moz-transition: 1s;
+-o-transition: 1s;
+transition: 1s;
+}
+*/
+
+.aboutContent {
+display: block;
+text-align:left;
+opacity: 0;
+top:70%;
+width: 60%;
+}
 /****************************** 
 about button
 *******************************/ 
@@ -1195,13 +1224,19 @@ form{
 	}
 	
 p {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+#section1 p {
+	position: absolute;
 	display: block;
 	-webkit-margin-before: 1em;
 	-webkit-margin-after: 1em;
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
 }
-
 input[type=text].half, input[type=email].half, input[type=tel] input[type=password].half, textarea.half {
 	width: 50%;
 }

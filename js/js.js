@@ -181,6 +181,34 @@
 				}, i*1000);
 		
 		});
+		
+	//Section1 "About Me". Hover effect.
+	//AboutBtn hover effect.
+			
+			
+		$('#initialAbout').animate({opacity: "1",top: "60%"},200, "swing");
+				
+				
+		$(".my-list li").mouseover( function(){
+			var aboutid = $(this).attr('about-id');
+			//$('#initialAbout').removeClass('visible');
+			$('.container .aboutContent[about-id="' + aboutid + '"]').animate({
+						opacity: "1",
+						top: "60%"
+						},200, "swing");
+		});
+		
+		$(".my-list li").mouseout( function(){
+			var aboutid = $(this).attr('about-id');
+			//$('#initialAbout').addClass('visible');
+			$('.container .aboutContent[about-id="' + aboutid + '"]').animate({
+							opacity: "0",
+							top: "50%"
+						},200, "swing",function(){
+							$('.container .aboutContent[about-id="' + aboutid + '"]').css("top","75%");
+						});
+
+		});
 	
 	//Allowing the class "samples overview" to be draggable.
 	
