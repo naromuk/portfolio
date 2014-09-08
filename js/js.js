@@ -196,6 +196,12 @@
 						opacity: "1",
 						top: "60%"
 						},200, "swing");
+						
+			if(aboutid != "0"){
+			 $('#initialAbout').animate({opacity: "0",top: "50%"},200, "swing", function(){
+				$('#initialAbout').css("top","75%");
+			 });
+			 }
 		});
 		
 		$(".my-list li").mouseout( function(){
@@ -206,6 +212,7 @@
 							top: "50%"
 						},200, "swing",function(){
 							$('.container .aboutContent[about-id="' + aboutid + '"]').css("top","75%");
+							
 						});
 
 		});

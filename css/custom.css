@@ -574,7 +574,7 @@ line-height: 1;
 
 .section h1, .section .h1 {
 text-align: center;
-text-transform: lowercase;
+/*text-transform: lowercase;*/
 font-weight: 300;
 }
 
@@ -631,55 +631,55 @@ padding-top: 20%;
 }
 
 .my-list .who .bg1{
-background-image: url(../img/japan8.jpg);
+background-image: url(../img/japan5bw.jpg);
 }
 .my-list .place .bg1{
-background-image: url(../img/japan16.jpg);
+background-image: url(../img/japan8bw.jpg);
 }
 
 .my-list .Education .bg1{
-background-image: url(../img/japan15.jpg);
+background-image: url(../img/japan9bw.jpg);
 }
 
 .my-list .Courses .bg1{
-background-image: url(../img/japan14.jpg);
+background-image: url(../img/japan10bw.jpg);
 }
 
 .my-list .Skills .bg1{
-background-image: url(../img/japan13.jpg);
+background-image: url(../img/japan11bw.jpg);
 }
 
 .my-list .Language .bg1{
-background-image: url(../img/japan12.jpg);
+background-image: url(../img/japan12bw.jpg);
 }
 
 .my-list .Certificate .bg1{
-background-image: url(../img/japan11.jpg);
+background-image: url(../img/japan13bw.jpg);
 }
 
 .my-list .Work .bg1{
-background-image: url(../img/japan10.jpg);
+background-image: url(../img/japan14bw.jpg);
 }
 
 .my-list .Hobby .bg1{
-background-image: url(../img/japan9.jpg);
+background-image: url(../img/japan15bw.jpg);
 }
 
 .my-list .who .bg1{
-background-image: url(../img/japan8.jpg);
+background-image: url(../img/japan16bw.jpg);
 }
 
 .my-list .Programming .bg1{
-background-image: url(../img/japan5.jpg);
+background-image: url(../img/japan5bw.jpg);
 }
 
 
 .my-list .Interest .bg1{
-background-image: url(../img/japan13.jpg);
+background-image: url(../img/japanesebw.jpg);
 }
 
 .my-list .Travel .bg1{
-background-image: url(../img/japan12.jpg);
+background-image: url(../img/japan7bw.jpg);
 }
 
 
@@ -693,7 +693,7 @@ transform: scale(1);
 
 .my-list .place .bg1,.my-list .Education .bg1,.my-list .Courses .bg1,.my-list .Skills .bg1,
 .my-list .Language .bg1,.my-list .Certificate .bg1,.my-list .Work .bg1,.my-list .Hobby .bg1,
-.my-list .Hobby2 .bg1,.my-list .Programming .bg1,.my-list .Interest .bg1,.my-list .Travel .bg1
+.my-list .who .bg1,.my-list .Programming .bg1,.my-list .Interest .bg1,.my-list .Travel .bg1
 {
 /*background: no-repeat center center;*/
 background-size: cover;
@@ -1759,7 +1759,6 @@ pointer-events: auto;
 .da-arrows span, .da-arrows a {
 text-align: left;
 position: absolute;
-top: 50%;
 height: 30px;
 width: 50px;
 border-radius: 20px;
