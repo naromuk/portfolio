@@ -248,7 +248,7 @@ body{
 }
 
 body::-webkit-scrollbar{
-	display: none;
+	/*display: none;*/
 	}
 
 ::selection {
@@ -572,10 +572,11 @@ font-size: 72px;
 line-height: 1;
 }
 
-.section h1, .section .h1 {
+.section .container h1{
 text-align: center;
 /*text-transform: lowercase;*/
 font-weight: 300;
+
 }
 
 .my-list li {
@@ -606,6 +607,19 @@ a:-webkit-any-link {
 cursor: auto;
 }
 
+
+
+.my-list .i1 h1, .my-list .i1:after h1 
+{
+
+width: 100%;
+text-align: center;
+color: white;
+display: block;
+padding-top: 20%;
+font-size: 30px;
+}
+
 .my-list .bg1, .my-list .bg2,
 .my-list .i1, .my-list .i2, .my-list .i1:after, .my-list .i2:after{
 display: block;
@@ -619,15 +633,6 @@ left: 0;
 -o-transition: .35s;
 transition: .35s;
 
-}
-
-.my-list .i1 h1, .my-list .i1:after h1 {
-font-size: 30px;
-width: 100%;
-text-align: center;
-color: white;
-display: block;
-padding-top: 20%;
 }
 
 .my-list .who .bg1{

@@ -17,14 +17,14 @@
 		//$('body').fadeIn(1000);
 
 //Ajax functions on click
-		samplebutton.click(function() {
+		samplebutton.click(function(event) {
 			event.preventDefault();
 			newLocation = $(this).attr('href');
 			//history.pushState({}, '', newLocation);
 			$('.samplecontainer').fadeOut(300, function(){newpage(newLocation);});	
 		});
 		
-		samplemenu.click(function() {
+		samplemenu.click(function(event) {
 			event.preventDefault();
 			newLocation = $(this).attr('href');
 			//history.pushState({}, '', newLocation);
@@ -47,7 +47,7 @@
 					});
 			}
 		
-		closebutton.click(function() {
+		closebutton.click(function(event) {
 			event.preventDefault();
 			$(".samplemenu").removeClass("visible");
 			$(".sampleclose").removeClass("visible");
